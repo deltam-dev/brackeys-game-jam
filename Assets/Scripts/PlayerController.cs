@@ -11,18 +11,26 @@ public class CameraController : MonoBehaviour
     private bool startedMoving = false;
     private bool isMovingDown = false;
 
+    void Awake()
+    {
+        // limit framerate        
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
     void Start() { }
 
-    void Update() { }
-
-    void FixedUpdate()
+    void Update()
     {
         // if (Input.GetKeyDown(KeyCode.Space))
         // {
         //     Debug.Log(startedMoving);
         //     Debug.Log(isMovingDown);
         // }
+    }
 
+    void FixedUpdate()
+    {
         // Stop at the start
         if (startedMoving && rb.position.y >= 0f)
         {
@@ -51,9 +59,12 @@ public class CameraController : MonoBehaviour
         if (startedMoving)
         {
             float moveX = Input.GetAxisRaw("Horizontal");
-            if (moveX > 0) {
+            if (moveX > 0)
+            {
                 rb.AddForce(Vector2.right * movementSpeed, ForceMode2D.Impulse);
-            } else if (moveX < 0) {
+            }
+            else if (moveX < 0)
+            {
                 rb.AddForce(Vector2.left * movementSpeed, ForceMode2D.Impulse);
             }
         }
