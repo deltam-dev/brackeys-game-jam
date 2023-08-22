@@ -28,6 +28,6 @@ public class GameState : MonoBehaviour
         string str = (value * -1).ToString("0");
         string str2 = (maxDepth * -1).ToString("0");
         depthText.text = str + " m";
-        maxDepthText.text = "MAX: " + str2 + " m";
+        maxDepthText.text = "max: " + str2 + " m";
     }
 }

@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 151119407}
-  downSpeed: 2
+  downSpeed: 4
   movementSpeed: 0.1
 --- !u!61 &151119409
 BoxCollider2D:
