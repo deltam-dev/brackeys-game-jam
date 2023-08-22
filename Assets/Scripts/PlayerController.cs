@@ -31,6 +31,8 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameState.Instance.updateDepth(rb.position.y);
+        
         // Stop at the start
         if (startedMoving && rb.position.y >= 0f)
         {
@@ -70,6 +72,6 @@ public class CameraController : MonoBehaviour
         }
 
         // moves the camera
-        Camera.main.transform.position = new Vector3(rb.position.x, rb.position.y, -10);
+        Camera.main.transform.position = new Vector3(0, rb.position.y, -10);
     }
 }
