@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class CameraController : MonoBehaviour
 
     private bool startedMoving = false;
     private bool isMovingDown = false;
+    private bool isStatic = false;
 
     void Awake()
     {
@@ -27,12 +29,9 @@ public class CameraController : MonoBehaviour
         //     Debug.Log(startedMoving);
         //     Debug.Log(isMovingDown);
         // }
-    }
 
-    void FixedUpdate()
-    {
         GameState.Instance.updateDepth(rb.position.y);
-        
+
         // Stop at the start
         if (startedMoving && rb.position.y >= 0f)
         {
@@ -40,6 +39,30 @@ public class CameraController : MonoBehaviour
             isMovingDown = false;
 
             rb.velocity = Vector2.zero;
+            GameState.Instance.returnedToSurface();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) && startedMoving)
+        {
+            if (!isStatic)
+            {
+                isStatic = true;
+
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                isStatic = false;
+
+                if (isMovingDown)
+                {
+                    rb.AddForce(Vector2.down * downSpeed, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rb.AddForce(Vector2.up * downSpeed, ForceMode2D.Impulse);
+                }
+            }
         }
 
         // vertical movement
@@ -49,16 +72,26 @@ public class CameraController : MonoBehaviour
             isMovingDown = true;
 
             rb.AddForce(Vector2.down * downSpeed, ForceMode2D.Impulse);
+            GameState.Instance.startDiving();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && startedMoving && isMovingDown)
         {
             isMovingDown = false;
 
-            rb.AddForce(Vector2.up * downSpeed * 2, ForceMode2D.Impulse);
+            if (isStatic)
+            {
+                isStatic = false;
+
+                rb.AddForce(Vector2.up * downSpeed, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Vector2.up * downSpeed * 2, ForceMode2D.Impulse);
+            }
         }
 
         // horizontal movement
-        if (startedMoving)
+        if (startedMoving && !isStatic)
         {
             float moveX = Input.GetAxisRaw("Horizontal");
             if (moveX > 0)
@@ -70,7 +103,10 @@ public class CameraController : MonoBehaviour
                 rb.AddForce(Vector2.left * movementSpeed, ForceMode2D.Impulse);
             }
         }
+    }
 
+    void FixedUpdate()
+    {
         // moves the camera
         Camera.main.transform.position = new Vector3(0, rb.position.y, -10);
     }
