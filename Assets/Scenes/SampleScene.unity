@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 151119407}
-  downSpeed: 4
+  downSpeed: 2
   movementSpeed: 0.1
 --- !u!61 &151119409
 BoxCollider2D:
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8310697012185943674, guid: 7c34c5d460a81e54cb6035afe893a1db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8310697012185943674, guid: 7c34c5d460a81e54cb6035afe893a1db, type: 3}
       propertyPath: m_LocalPosition.y
@@ -983,7 +983,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -25, z: 0}
-  m_LocalScale: {x: 6, y: 50, z: 1}
+  m_LocalScale: {x: 10, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1541,7 +1541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8310697012185943674, guid: 7c34c5d460a81e54cb6035afe893a1db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8310697012185943674, guid: 7c34c5d460a81e54cb6035afe893a1db, type: 3}
       propertyPath: m_LocalPosition.y
