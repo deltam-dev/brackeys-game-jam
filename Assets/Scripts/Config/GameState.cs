@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameState : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameState : MonoBehaviour
     private float oxygen;
 
     private bool isOnSurface = true;
+
+    public float Oxygen { get => oxygen; }
+    public bool IsOnSurface { get => isOnSurface; set => isOnSurface = value; }
 
     private void Awake()
     {
