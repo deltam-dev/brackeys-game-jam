@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 23800000, guid: 39a50939c9bcc3644b92d053946988da, type: 2}
     - target: {fileID: 8963343896406988002, guid: 57e1854e0675d764cab48a7fe4ef443e, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: NavMesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -509,8 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
+  m_OverrideArea: 0
+  m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!1 &473368086
@@ -962,7 +962,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 701810081232597302, guid: 01e3200a8644e5d40b099cec23b188f7, type: 3}
       propertyPath: m_Name
-      value: Triangle
+      value: FishSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 2733728707531928995, guid: 01e3200a8644e5d40b099cec23b188f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 1
+  m_OverrideArea: 0
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
@@ -2144,8 +2144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
+  m_OverrideArea: 0
+  m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!1 &1988203440
