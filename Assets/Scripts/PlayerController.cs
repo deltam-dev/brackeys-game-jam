@@ -8,10 +8,13 @@ public class CameraController : MonoBehaviour
     public Rigidbody2D rb;
     public float downSpeed = 2f;
     public float movementSpeed = 2f;
+    public GameObject playerCamera;
 
     private bool startedMoving = false;
     private bool isMovingDown = false;
     private bool isStatic = false;
+
+    Vector2 mousePosition;
 
     void Awake()
     {
@@ -20,7 +23,10 @@ public class CameraController : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    void Start() { }
+    void Start()
+    {
+        mousePosition = new Vector2(rb.position.x, rb.position.y - 1f);
+    }
 
     void Update()
     {
@@ -38,10 +44,17 @@ public class CameraController : MonoBehaviour
             startedMoving = false;
             isMovingDown = false;
 
+            // stop player
             rb.velocity = Vector2.zero;
+            // return player to start position
+            rb.position = new Vector2(0, 0);
+            // stop playerCamera
+            mousePosition = new Vector2(rb.position.x, rb.position.y - 1f);
+            // restart O2 and activate shop
             GameState.Instance.returnedToSurface();
         }
 
+        // stop movement once started
         if (Input.GetKeyDown(KeyCode.S) && startedMoving)
         {
             if (!isStatic)
@@ -103,11 +116,23 @@ public class CameraController : MonoBehaviour
                 rb.AddForce(Vector2.left * movementSpeed, ForceMode2D.Impulse);
             }
         }
+
+        if (startedMoving)
+        {
+            Vector3 screenPoint = Input.mousePosition;
+            screenPoint.z = -Camera.main.transform.position.z;
+            mousePosition = Camera.main.ScreenToWorldPoint(screenPoint);
+        }
     }
 
     void FixedUpdate()
     {
         // moves the camera
         Camera.main.transform.position = new Vector3(0, rb.position.y, -10);
+
+        Vector2 aimDirection = mousePosition - rb.position;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        Quaternion aimRotation = Quaternion.Euler(0f, 0f, aimAngle);
+        playerCamera.transform.rotation = aimRotation;
     }
 }
