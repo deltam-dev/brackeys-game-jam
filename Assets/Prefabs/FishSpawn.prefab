@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8016488205615359187}
   - component: {fileID: 7288272510430036817}
   m_Layer: 4
-  m_Name: Triangle
+  m_Name: FishSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
