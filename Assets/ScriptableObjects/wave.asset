@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e826b4c1a89d1e42901f27c836526f8, type: 3}
   m_Name: wave
   m_EditorClassIdentifier: 
-  fishesInWave: []
+  fishesInWave:
+  - {fileID: 11400000, guid: 4f25505d04463794cb89f7a3250e9a5c, type: 2}
+  - {fileID: 11400000, guid: 51a957ed631c6774e8bec41e13cde79b, type: 2}

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.AI;
 
 [CreateAssetMenu(fileName = "Fish", menuName = "brackeys-game-jam/Fish", order = 0)]
 public class Fish : ScriptableObject
@@ -22,12 +21,12 @@ public class Fish : ScriptableObject
 
     public GameObject prefab;
 
-        RaycastHit2D raycastHit2D;
-    
+
+
 
     private bool yetInit = false;
     private void Awake()
-    {
+    {        
         if (yetInit)
         {
             return;
@@ -36,9 +35,6 @@ public class Fish : ScriptableObject
         yetInit = true;
     }
 
-    private void Update(){
-        
-        raycastHit2D=Physics2D.Raycast(prefab.transform.position,prefab.transform.right,1f);
-    }
+
 
 }
