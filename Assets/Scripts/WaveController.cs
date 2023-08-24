@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveController : MonoBehaviour
 {
     public Wave wave;
-    public float timeToWave = 2f;
+    public float timeBetweenWaves  = 2f;
     private float timeToLastWave = 0f;
     private int i = 0;
     void Start()
@@ -18,9 +18,10 @@ public class WaveController : MonoBehaviour
     {
 
         float currenTimePass = Time.time - timeToLastWave;
-        if (currenTimePass > timeToLastWave && i < 1)
+        if (currenTimePass > timeBetweenWaves && i <= 1)
         {
-            Instantiate(wave.fishesInWave[0].prefab, transform.position, transform.rotation);
+            Vector3 position=new Vector3(transform.position.x+1, transform.position.y,0);
+            Instantiate(wave.fishesInWave[i].prefab, position, transform.rotation);
             timeToLastWave = Time.time;
             i++;
         }

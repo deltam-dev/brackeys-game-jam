@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7469440929446168586}
   - component: {fileID: -6780243912428140690}
   m_Layer: 6
-  m_Name: pezTem_0(Clone)
+  m_Name: pezTem_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1207910218, guid: 74cc4c6e4e31f854c970e11220dd438a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4af8ce15757f60d48899fbadf6859fa2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
