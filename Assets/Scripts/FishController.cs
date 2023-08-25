@@ -22,8 +22,10 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("spa" + fish.deepingSpawn);
+        Debug.Log("sped" + fish.speed);
         navMeshAgent.speed = fish.speed;
-        bool isAproxToArrive = navMeshAgent.remainingDistance <1f;
+        bool isAproxToArrive = navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
         
         if (isAproxToArrive)
         {
@@ -41,7 +43,7 @@ public class FishController : MonoBehaviour
 
         Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 2.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
             //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
             //or add a for loop like in the documentation

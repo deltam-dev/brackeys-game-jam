@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  rare: 0
-  speed: 6.92
-  deepingSpawn: 7
+  rare: 2
+  speed: 2.2
+  deepingSpawn: 5
   fishName: 
   prefab: {fileID: 8963491917881618029, guid: 669c8fde58a9c3049b11cfd3cad9858e, type: 3}

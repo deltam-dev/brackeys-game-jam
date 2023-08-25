@@ -27,12 +27,12 @@ public class Fish : ScriptableObject
     private bool yetInit = false;
     private void Awake()
     {        
-        if (yetInit)
-        {
-            return;
-        }
+        // if (yetInit)
+        // {
+        //     return;
+        // }
 
-        yetInit = true;
+        // yetInit = true;
     }
 
 
