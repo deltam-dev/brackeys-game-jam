@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
+  m_Name: payaso
+  m_EditorClassIdentifier: 
+  rare: 0
+  shinyProb: 0
+  spawnSpeed: 0
+  deepingSpawn: 3
+  fishName: Pez Payaso
+  prefab: {fileID: 3716193092863303096, guid: 14c080855cdb39f4b8357442118b9ad0, type: 3}

@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 11400000, guid: 6a5ae5f58852a564fb413bbf314b1d03, type: 2}
-  timeBetweenWaves: 2
+  level: 0
+  timeBetweenWaves: 4

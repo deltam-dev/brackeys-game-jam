@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e826b4c1a89d1e42901f27c836526f8, type: 3}
+  m_Name: spawner
+  m_EditorClassIdentifier: 
+  fishesInWave:
+  - {fileID: 11400000, guid: 51a957ed631c6774e8bec41e13cde79b, type: 2}
+  - {fileID: 11400000, guid: 79cd0257105c6c64a90527e1e6c662e0, type: 2}
+  - {fileID: 11400000, guid: ca0f8f02bbd8ac64fac20e3d88a87a77, type: 2}
+  - {fileID: 11400000, guid: 9eb5308ca9538324b89ff1efc375c934, type: 2}
+  - {fileID: 11400000, guid: 2c932a1f3c2947a4b86a9a8c9dc45670, type: 2}
+  - {fileID: 11400000, guid: 5e400fcd641dbe44cbf89fd554aea217, type: 2}
+  - {fileID: 11400000, guid: cfde7155748e3b44b9fb8a15265d0578, type: 2}
+  - {fileID: 11400000, guid: 22bd37c78e1222b40909a22487f4c95a, type: 2}
+  - {fileID: 11400000, guid: 4f25505d04463794cb89f7a3250e9a5c, type: 2}
+  - {fileID: 11400000, guid: 9dd68fad44c7fe14186757a1c80cf26b, type: 2}
