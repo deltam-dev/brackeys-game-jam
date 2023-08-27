@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 5687563881794012338}
   - component: {fileID: 1585617773366007614}
   - component: {fileID: 9159646097144744925}
+  - component: {fileID: 5999840128886049620}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -326,7 +327,7 @@ MonoBehaviour:
   movementSpeed: 0.1
   playerCamera: {fileID: 8030619308779956289}
   camaraFlash: {fileID: 0}
-  pez: {fileID: 0}
+  moneyAudio: {fileID: 0}
 --- !u!61 &9159646097144744925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -372,6 +373,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &5999840128886049620
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5513575712308177275}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 343faebd0e62bab4ab18745c5faf00d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6734027748220830592
 GameObject:
   m_ObjectHideFlags: 0
