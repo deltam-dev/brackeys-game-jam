@@ -16,31 +16,31 @@ public class FishController : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         initialPosition = transform.position;
-
     }
 
 
     private void Update()
     {
-        Debug.Log("spa" + fish.deepingSpawn);
-        Debug.Log("sped" + fish.speed);
-        navMeshAgent.speed = fish.speed;
-        bool isAproxToArrive = navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
-        
-        if (isAproxToArrive)
+        // Debug.Log("spa" + fish.deepingSpawn);
+        // Debug.Log("sped" + fish.speed);
+        if (navMeshAgent.enabled)
         {
-            Vector3 point;
-            if (RandomPoint(initialPosition, fish.deepingSpawn, out point)) //pass in our centre point and radius of area
+            navMeshAgent.speed = fish.speed;
+            bool isAproxToArrive = navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+            if (isAproxToArrive)
             {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                navMeshAgent.SetDestination(point);
+                Vector3 point;
+                if (RandomPoint(initialPosition, fish.deepingSpawn, out point)) //pass in our centre point and radius of area
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                    navMeshAgent.SetDestination(point);
+                }
             }
         }
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-
         Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))

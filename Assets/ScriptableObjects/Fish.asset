@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  rare: 2
+  rare: 1
   speed: 2.2
   deepingSpawn: 5
   fishName: 

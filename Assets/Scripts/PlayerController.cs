@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
 
     Vector2 mousePosition;
 
+    public AudioSource camaraFlash;
+    public GameObject pez;
+
     void Awake()
     {
         // limit framerate        
@@ -122,6 +125,37 @@ public class CameraController : MonoBehaviour
             Vector3 screenPoint = Input.mousePosition;
             screenPoint.z = -Camera.main.transform.position.z;
             mousePosition = Camera.main.ScreenToWorldPoint(screenPoint);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                camaraFlash.Play();
+                GameState.Instance.addPhoto(pez);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 5f);
+                if (hit.collider != null)
+                {
+                    //Hit something, print the tag of the object
+                    Debug.Log("Hitting: " + hit.collider.tag);
+                    Debug.Log("Hitting: " + hit.collider.name);
+                }
+
+                //Method to draw the ray in scene for debug purpose
+                Debug.DrawRay(transform.position, Vector2.right * 5F, Color.red);
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit raycastHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out raycastHit, 100f))
+            {
+                Debug.Log("MouseHit");
+                if (raycastHit.transform != null)
+                {
+                    //Our custom method. 
+                    CurrentClickedGameObject(raycastHit.transform.gameObject);
+                }
+            }
         }
     }
 
@@ -134,5 +168,13 @@ public class CameraController : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion aimRotation = Quaternion.Euler(0f, 0f, aimAngle);
         playerCamera.transform.rotation = aimRotation;
+    }
+
+    public void CurrentClickedGameObject(GameObject gameObject)
+    {
+        if (gameObject.tag == "photoBeforeSold")
+        {
+            Debug.Log("This!");
+        }
     }
 }

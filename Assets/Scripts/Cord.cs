@@ -46,7 +46,7 @@ namespace Tentacles
             currentTrailSpeed = GameState.Instance.IsOnSurface ? 0 : currentTrailSpeed;
             currentTargetDistance = GameState.Instance.IsOnSurface ? 0 : currentTargetDistance;
             
-            Debug.Log(lineRenderer.colorGradient.colorKeys[0].color);
+            // Debug.Log(lineRenderer.colorGradient.colorKeys[0].color);
             float size = length * Math.Abs(transform.position.y / length);
 
             segments[0] = targetDir.position;

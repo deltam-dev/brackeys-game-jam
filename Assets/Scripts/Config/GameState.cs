@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 using UnityEngine.Events;
 
@@ -20,6 +21,9 @@ public class GameState : MonoBehaviour
 
     public float Oxygen { get => oxygen; }
     public bool IsOnSurface { get => isOnSurface; set => isOnSurface = value; }
+
+    public ArrayList photos = new ArrayList();
+    public GameObject photosArea;
 
     private void Awake()
     {
@@ -59,11 +63,31 @@ public class GameState : MonoBehaviour
     public void startDiving()
     {
         isOnSurface = false;
+
+        foreach (GameObject fish in photos)
+        {
+            Destroy(fish);
+        }
+        photos = new ArrayList();
     }
 
     public void returnedToSurface()
     {
         isOnSurface = true;
         oxygen = 100f;
+    }
+
+    public void addPhoto(GameObject gameObject) {
+        int position = photos.Count;
+
+        GameObject newFish = Instantiate(gameObject); 
+        newFish.GetComponent<NavMeshAgent>().enabled = false; 
+        newFish.transform.parent = photosArea.transform;
+        newFish.transform.localPosition = new Vector3(photosArea.transform.position.x, photosArea.transform.position.y - (position * 75f), photosArea.transform.position.z);
+        newFish.transform.localRotation = photosArea.transform.rotation;
+        newFish.transform.localScale = new Vector3(100f, 100f, 0f); 
+        newFish.tag = "photoBeforeSold";
+
+        photos.Add(newFish); 
     }
 }
