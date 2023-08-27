@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class FishSkinController : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public bool isShiny;
+    private int skinNr;
+    public Skins[] skins;
+    SpriteRenderer spriteRenderer;
+    public int spriteNr;
+
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!isShiny) skinNr = 0;
+        else skinNr = skins.Length - 1;
     }
+
+    void LateUpdate()
+    {
+        SkinChoice();
+    }
+
+    void SkinChoice()
+    {
+        if (spriteRenderer.sprite.name.Contains(gameObject.name))
+        {
+            string spriteName = spriteRenderer.sprite.name;
+            spriteName = spriteName.Replace(gameObject.name+"_", "");
+            spriteNr = int.Parse(spriteName);
+
+            spriteRenderer.sprite = skins[skinNr].sprites[spriteNr];
+        }
+    }
+
+
+}
+
+[System.Serializable]
+public struct Skins
+{
+    public Sprite[] sprites;
 }

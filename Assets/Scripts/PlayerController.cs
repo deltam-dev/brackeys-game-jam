@@ -138,23 +138,8 @@ public class CameraController : MonoBehaviour
                     Debug.Log("Hitting: " + hit.collider.name);
                 }
 
-                //Method to draw the ray in scene for debug purpose
+                // Method to draw the ray in scene for debug purpose
                 Debug.DrawRay(transform.position, Vector2.right * 5F, Color.red);
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
-            {
-                Debug.Log("MouseHit");
-                if (raycastHit.transform != null)
-                {
-                    //Our custom method. 
-                    CurrentClickedGameObject(raycastHit.transform.gameObject);
-                }
             }
         }
     }

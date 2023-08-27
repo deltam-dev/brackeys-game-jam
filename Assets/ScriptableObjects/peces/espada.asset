@@ -7,13 +7,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
-  m_Name: Fish 1
+  m_Name: espada
   m_EditorClassIdentifier: 
-  rare: 0
-  speed: 1.2
-  deepingSpawn: 6
-  fishName: j
-  prefab: {fileID: 8963491917881618029, guid: eeb61eb59f49e4c4a8598dfc08413bf0, type: 3}
+  rare: 2
+  shinyProb: 0
+  spawnSpeed: 0
+  deepingSpawn: 4
+  fishName: 'Pez Espada
+
+'
+  prefab: {fileID: 3096048198090159543, guid: 9000ac765aa94ed42818b7bf12ce273f, type: 3}

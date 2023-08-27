@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
-  m_Name: Fish
+  m_Name: medusa
   m_EditorClassIdentifier: 
-  rare: 1
-  speed: 2.2
-  deepingSpawn: 5
-  fishName: 
-  prefab: {fileID: 8963491917881618029, guid: 669c8fde58a9c3049b11cfd3cad9858e, type: 3}
+  rare: 2
+  shinyProb: 0
+  spawnSpeed: 0
+  deepingSpawn: 6
+  fishName: Medusa Gigante
+  prefab: {fileID: 344204818579721093, guid: 86026d54ee7933b4487afdab3e711bf3, type: 3}
