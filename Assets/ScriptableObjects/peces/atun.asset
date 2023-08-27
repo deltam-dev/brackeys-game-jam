@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e826b4c1a89d1e42901f27c836526f8, type: 3}
-  m_Name: wave
+  m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
+  m_Name: atun
   m_EditorClassIdentifier: 
-  fishesInWave:
-  - {fileID: 11400000, guid: 4f25505d04463794cb89f7a3250e9a5c, type: 2}
-  - {fileID: 11400000, guid: 51a957ed631c6774e8bec41e13cde79b, type: 2}
+  rare: 1
+  shinyProb: 0
+  speed: 3.1
+  deepingSpawn: 1
+  fishName: 'Atun
+
+'
+  prefab: {fileID: 3002215512576544424, guid: c767fc148775d6c4283bc69925eab6ab, type: 3}

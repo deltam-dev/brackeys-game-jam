@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6632b6ca4011ca41ba6932188d5d309, type: 3}
+  m_Name: dori
+  m_EditorClassIdentifier: 
+  rare: 2
+  shinyProb: 0
+  spawnSpeed: 0
+  deepingSpawn: 2
+  fishName: 'Pez Cirujano
+
+'
+  prefab: {fileID: 6128281941096593078, guid: ebf0a03dca8632b4ea1c606c4386234f, type: 3}
