@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     Vector2 mousePosition;
 
     public AudioSource camaraFlash;
-    public GameObject pez;
+    public AudioSource moneyAudio;
 
     void Awake()
     {
@@ -55,6 +55,7 @@ public class CameraController : MonoBehaviour
             mousePosition = new Vector2(rb.position.x, rb.position.y - 1f);
             // restart O2 and activate shop
             GameState.Instance.returnedToSurface();
+            moneyAudio.Play();
         }
 
         // stop movement once started
@@ -120,27 +121,41 @@ public class CameraController : MonoBehaviour
             }
         }
 
+        Vector2 aimDirection = mousePosition - rb.position;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        Quaternion aimRotation = Quaternion.Euler(0f, 0f, aimAngle);
+        playerCamera.transform.rotation = aimRotation;
+
         if (startedMoving)
         {
             Vector3 screenPoint = Input.mousePosition;
             screenPoint.z = -Camera.main.transform.position.z;
             mousePosition = Camera.main.ScreenToWorldPoint(screenPoint);
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && GameState.Instance.canTakePhoto())
             {
                 camaraFlash.Play();
-                GameState.Instance.addPhoto(pez);
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 5f);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 5f, LayerMask.GetMask("Fish"));
                 if (hit.collider != null)
                 {
-                    //Hit something, print the tag of the object
-                    Debug.Log("Hitting: " + hit.collider.tag);
+                    float depth = (rb.position.y * -1) * 0.5f;
+                    float distance = (1 / hit.distance) * 10 * 0.2f;
+                    float rarity = hit.collider.gameObject.GetComponent<FishController>().fish.rare * 20 * 0.3f;
+                    Debug.Log("" + depth + ", " + distance + ", " + rarity);
+
+                    float moneyRaw = depth + distance + rarity;
+                    float moneyNormalized = (moneyRaw / 1000) * 100;
+                    Debug.Log("" + moneyRaw + ", " + moneyNormalized);
+                    
+                    GameState.Instance.addPhoto(hit.collider.gameObject, moneyNormalized);
                     Debug.Log("Hitting: " + hit.collider.name);
                 }
 
                 // Method to draw the ray in scene for debug purpose
-                Debug.DrawRay(transform.position, Vector2.right * 5F, Color.red);
+                Debug.DrawRay(transform.position, aimDirection * 5f, Color.red);
             }
+
+
         }
     }
 
@@ -149,10 +164,7 @@ public class CameraController : MonoBehaviour
         // moves the camera
         Camera.main.transform.position = new Vector3(0, rb.position.y, -10);
 
-        Vector2 aimDirection = mousePosition - rb.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        Quaternion aimRotation = Quaternion.Euler(0f, 0f, aimAngle);
-        playerCamera.transform.rotation = aimRotation;
+
     }
 
     public void CurrentClickedGameObject(GameObject gameObject)

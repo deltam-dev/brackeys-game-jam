@@ -12,10 +12,14 @@ public class GameState : MonoBehaviour
     public TMP_Text depthText;
     public TMP_Text maxDepthText;
     public TMP_Text oxygenText;
+    public TMP_Text currentMoneyText;
+    public TMP_Text totalMoneyText;
 
     private float depth;
     private float maxDepth;
     private float oxygen;
+    private float thisDiveMoney;
+    private float totalMoney;
 
     private bool isOnSurface = true;
 
@@ -23,6 +27,7 @@ public class GameState : MonoBehaviour
     public bool IsOnSurface { get => isOnSurface; set => isOnSurface = value; }
 
     public ArrayList photos = new ArrayList();
+    public ArrayList moneyValues = new ArrayList();
     public GameObject photosArea;
 
     private void Awake()
@@ -44,6 +49,9 @@ public class GameState : MonoBehaviour
 
         string strOxygen = oxygen.ToString("0");
         oxygenText.text = "O2: " + strOxygen;
+
+        currentMoneyText.text = "$: " + thisDiveMoney.ToString("0.00");
+        totalMoneyText.text = "Total $: " + totalMoney.ToString("0.00");
     }
 
     public void updateDepth(float value)
@@ -69,6 +77,14 @@ public class GameState : MonoBehaviour
             Destroy(fish);
         }
         photos = new ArrayList();
+        foreach (GameObject moneyValue in moneyValues)
+        {
+            Destroy(moneyValue);
+        }
+        moneyValues = new ArrayList();
+
+        totalMoney += thisDiveMoney;
+        thisDiveMoney = 0f;
     }
 
     public void returnedToSurface()
@@ -77,17 +93,46 @@ public class GameState : MonoBehaviour
         oxygen = 100f;
     }
 
-    public void addPhoto(GameObject gameObject) {
+    public bool canTakePhoto()
+    {
+        if (photos.Count < 5)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void addPhoto(GameObject gameObject, float moneyValue)
+    {
         int position = photos.Count;
 
-        GameObject newFish = Instantiate(gameObject); 
-        newFish.GetComponent<NavMeshAgent>().enabled = false; 
-        newFish.transform.parent = photosArea.transform;
+        GameObject newFish = Instantiate(gameObject);
+        newFish.GetComponent<NavMeshAgent>().enabled = false;
+        newFish.transform.SetParent(photosArea.transform, false);
         newFish.transform.localPosition = new Vector3(photosArea.transform.position.x, photosArea.transform.position.y - (position * 75f), photosArea.transform.position.z);
         newFish.transform.localRotation = photosArea.transform.rotation;
-        newFish.transform.localScale = new Vector3(100f, 100f, 0f); 
+        newFish.transform.localScale = new Vector3(100f, 100f, 0f);
         newFish.tag = "photoBeforeSold";
 
-        photos.Add(newFish); 
+        GameObject textObject = new GameObject("moneyValueText");
+        RectTransform rectTransform = textObject.AddComponent<RectTransform>();
+        TMP_Text moneyValueText = textObject.AddComponent<TextMeshProUGUI>();
+        moneyValueText.text = moneyValue.ToString("0.00");
+        moneyValueText.fontSize = 28;
+        moneyValueText.alignment = TextAlignmentOptions.Center;
+
+        textObject = Instantiate(textObject);
+        textObject.transform.SetParent(photosArea.transform, false);
+        textObject.transform.localPosition = new Vector3(photosArea.transform.position.x, photosArea.transform.position.y - (position * 75f) - 10f, photosArea.transform.position.z);
+        textObject.transform.localRotation = photosArea.transform.rotation;
+        textObject.transform.localScale = new Vector3(1f, 1f, 0f);
+
+        photos.Add(newFish);
+        moneyValues.Add(textObject);
+
+        thisDiveMoney += moneyValue;
     }
 }

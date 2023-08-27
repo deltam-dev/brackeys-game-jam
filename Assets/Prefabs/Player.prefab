@@ -308,7 +308,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1585617773366007614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +325,8 @@ MonoBehaviour:
   downSpeed: 2
   movementSpeed: 0.1
   playerCamera: {fileID: 8030619308779956289}
+  camaraFlash: {fileID: 0}
+  pez: {fileID: 0}
 --- !u!61 &9159646097144744925
 BoxCollider2D:
   m_ObjectHideFlags: 0

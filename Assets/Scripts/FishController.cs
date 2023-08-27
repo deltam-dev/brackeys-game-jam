@@ -30,7 +30,7 @@ public class FishController : MonoBehaviour
             if (isAproxToArrive)
             {
                 Vector3 point;
-                if (RandomPoint(initialPosition, fish.deepingSpawn, out point)) //pass in our centre point and radius of area
+                if (RandomPoint(initialPosition, 10f, out point)) //pass in our centre point and radius of area
                 {
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                     navMeshAgent.SetDestination(point);
