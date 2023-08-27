@@ -53,9 +53,13 @@ public class CameraController : MonoBehaviour
             rb.position = new Vector2(0, 0);
             // stop playerCamera
             mousePosition = new Vector2(rb.position.x, rb.position.y - 1f);
+            // play audio if anything to sell
+            if (GameState.Instance.CurrentMoney > 0)
+            {
+                moneyAudio.Play();
+            }
             // restart O2 and activate shop
             GameState.Instance.returnedToSurface();
-            moneyAudio.Play();
         }
 
         // stop movement once started
@@ -134,7 +138,6 @@ public class CameraController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && GameState.Instance.canTakePhoto())
             {
-                camaraFlash.Play();
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 5f, LayerMask.GetMask("Fish"));
                 if (hit.collider != null)
                 {
@@ -146,9 +149,11 @@ public class CameraController : MonoBehaviour
                     float moneyRaw = depth + distance + rarity;
                     float moneyNormalized = (moneyRaw / 1000) * 100;
                     Debug.Log("" + moneyRaw + ", " + moneyNormalized);
-                    
+
                     GameState.Instance.addPhoto(hit.collider.gameObject, moneyNormalized);
                     Debug.Log("Hitting: " + hit.collider.name);
+
+                    camaraFlash.Play();
                 }
 
                 // Method to draw the ray in scene for debug purpose

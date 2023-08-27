@@ -26,6 +26,8 @@ public class GameState : MonoBehaviour
     public float Oxygen { get => oxygen; }
     public bool IsOnSurface { get => isOnSurface; set => isOnSurface = value; }
 
+    public float CurrentMoney { get => thisDiveMoney; }
+
     public ArrayList photos = new ArrayList();
     public ArrayList moneyValues = new ArrayList();
     public GameObject photosArea;
@@ -82,15 +84,15 @@ public class GameState : MonoBehaviour
             Destroy(moneyValue);
         }
         moneyValues = new ArrayList();
-
-        totalMoney += thisDiveMoney;
-        thisDiveMoney = 0f;
     }
 
     public void returnedToSurface()
     {
         isOnSurface = true;
         oxygen = 100f;
+
+        totalMoney += thisDiveMoney;
+        thisDiveMoney = 0f;
     }
 
     public bool canTakePhoto()
