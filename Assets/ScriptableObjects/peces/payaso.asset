@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 0
   shinyProb: 0
-  spawnSpeed: 0
+  speed: 1.5
   deepingSpawn: 3
   fishName: Pez Payaso
   prefab: {fileID: 3716193092863303096, guid: 14c080855cdb39f4b8357442118b9ad0, type: 3}

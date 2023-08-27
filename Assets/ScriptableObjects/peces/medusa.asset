@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 2
   shinyProb: 0
-  spawnSpeed: 0
+  speed: 2
   deepingSpawn: 6
   fishName: Medusa Gigante
   prefab: {fileID: 344204818579721093, guid: 86026d54ee7933b4487afdab3e711bf3, type: 3}

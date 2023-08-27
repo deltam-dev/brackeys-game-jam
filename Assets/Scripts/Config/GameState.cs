@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour
 
     void Start()
     {
-        oxygen = 100f;
+        oxygen = 300f;
     }
 
     void FixedUpdate()

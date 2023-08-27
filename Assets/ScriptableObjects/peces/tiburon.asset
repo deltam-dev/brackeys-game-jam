@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 2
   shinyProb: 0
-  spawnSpeed: 0
+  speed: 1.8
   deepingSpawn: 10
   fishName: Tiburon Blanco
   prefab: {fileID: 1370928363225567787, guid: 29f0b926f210c2545a5e6c7ff8fd31b3, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 2
   shinyProb: 0
-  spawnSpeed: 0
+  speed: 2
   deepingSpawn: 2
   fishName: 'Pez Cirujano
 

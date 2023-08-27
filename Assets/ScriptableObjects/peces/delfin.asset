@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 2
   shinyProb: 0
-  spawnSpeed: 0
+  speed: 5
   deepingSpawn: 3
   fishName: Delfin
   prefab: {fileID: 5092412548545133715, guid: f3fa4343e4e4bc646bfcb1f9d279ba7a, type: 3}
