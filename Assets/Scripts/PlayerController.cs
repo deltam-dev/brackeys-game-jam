@@ -142,7 +142,7 @@ public class CameraController : MonoBehaviour
                 if (hit.collider != null)
                 {
                     float depth = (rb.position.y * -1) * 0.5f;
-                    float distance = (1 / hit.distance) * 10 * 0.2f;
+                    float distance = hit.distance != 0 ? (1 / hit.distance) * 10 * 0.2f: 0f;
                     float rarity = hit.collider.gameObject.GetComponent<FishController>().fish.rare * 20 * 0.3f;
                     Debug.Log("" + depth + ", " + distance + ", " + rarity);
 
