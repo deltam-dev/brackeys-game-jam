@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: f958cb34475e3ed43be72fc13e4230da, type: 3}
+  m_Sprite: {fileID: 222405171, guid: cbc0185c8c7c5d649becec39b7326d23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,3 +100,4 @@ MonoBehaviour:
   wave: {fileID: 11400000, guid: 6a5ae5f58852a564fb413bbf314b1d03, type: 2}
   level: 0
   timeBetweenWaves: 4
+  limit: 10

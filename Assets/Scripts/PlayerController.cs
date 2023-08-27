@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     private bool startedMoving = false;
     private bool isMovingDown = false;
     private bool isStatic = false;
+    private Animator animator;
 
     Vector2 mousePosition;
 
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
         // limit framerate        
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -47,6 +49,7 @@ public class CameraController : MonoBehaviour
             startedMoving = false;
             isMovingDown = false;
 
+
             // stop player
             rb.velocity = Vector2.zero;
             // return player to start position
@@ -54,6 +57,7 @@ public class CameraController : MonoBehaviour
             // stop playerCamera
             mousePosition = new Vector2(rb.position.x, rb.position.y - 1f);
             // restart O2 and activate shop
+
             GameState.Instance.returnedToSurface();
             moneyAudio.Play();
         }
@@ -61,6 +65,7 @@ public class CameraController : MonoBehaviour
         // stop movement once started
         if (Input.GetKeyDown(KeyCode.S) && startedMoving)
         {
+            animator.SetTrigger("finish");
             if (!isStatic)
             {
                 isStatic = true;
@@ -73,10 +78,12 @@ public class CameraController : MonoBehaviour
 
                 if (isMovingDown)
                 {
+                    animator.SetBool("down", true);
                     rb.AddForce(Vector2.down * downSpeed, ForceMode2D.Impulse);
                 }
                 else
                 {
+                    animator.SetTrigger("return");
                     rb.AddForce(Vector2.up * downSpeed, ForceMode2D.Impulse);
                 }
             }
@@ -85,6 +92,7 @@ public class CameraController : MonoBehaviour
         // vertical movement
         if (Input.GetKeyDown(KeyCode.Space) && !startedMoving && !isMovingDown)
         {
+            animator.SetBool("down", true);
             startedMoving = true;
             isMovingDown = true;
 
@@ -94,15 +102,17 @@ public class CameraController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && startedMoving && isMovingDown)
         {
             isMovingDown = false;
-
+            
             if (isStatic)
             {
                 isStatic = false;
 
                 rb.AddForce(Vector2.up * downSpeed, ForceMode2D.Impulse);
+                animator.SetBool("down", false);
             }
             else
             {
+                animator.SetBool("down", true);
                 rb.AddForce(Vector2.up * downSpeed * 2, ForceMode2D.Impulse);
             }
         }
@@ -113,10 +123,12 @@ public class CameraController : MonoBehaviour
             float moveX = Input.GetAxisRaw("Horizontal");
             if (moveX > 0)
             {
+                animator.SetTrigger("right");
                 rb.AddForce(Vector2.right * movementSpeed, ForceMode2D.Impulse);
             }
             else if (moveX < 0)
             {
+                animator.SetTrigger("left");
                 rb.AddForce(Vector2.left * movementSpeed, ForceMode2D.Impulse);
             }
         }
